@@ -1,0 +1,23 @@
+# OS
+.DS_Store
+
+# Python
+__pycache__/
+*.py[oc]
+*.egg-info
+.venv/
+
+# Model checkpoints (too large for git)
+*.pt
+out-*/
+
+# Data binaries
+*.bin
+data/rocstories/
+data/rocstories_filtered/
+data/story_mix/
+data/synthetic_stories_cleaned.txt
+meta.pkl
+
+# Experimental configs (kept locally)
+config/
