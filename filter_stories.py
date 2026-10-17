@@ -67,10 +67,9 @@ def score_story(text):
     total_loss = 0.0
     total_tokens = 0
     for i in range(0, tokens_t.size(1) - 1, BLOCK_SIZE):
-        xc = tokens_t[:, i:i+BLOCK_SIZE]
-        yc = tokens_t[:, i+1:i+BLOCK_SIZE+1]
-        if xc.size(1) == 0:
-            break
+        chunk = tokens_t[:, i:i+BLOCK_SIZE+1]
+        xc = chunk[:, :-1]
+        yc = chunk[:, 1:]
         logits, loss = model(xc, yc)
         total_loss += loss.item() * xc.size(1)
         total_tokens += xc.size(1)
